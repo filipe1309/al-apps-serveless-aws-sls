@@ -21,7 +21,7 @@ module.exports.listarPacientes = async(event) => {
 
 module.exports.obterPaciente = async(event) => {
     const { pacienteId } = event.pathParameters;
-    const paciente = pacientes.find(paciente => paciente.id == pacienteId);
+    const paciente = pacientes.find(pacienteObj => pacienteObj.id == pacienteId);
 
     if (paciente == undefined) {
         return {
