@@ -7,7 +7,7 @@ const pacientes = [
 ];
 
 module.exports.listarPacientes = async(event) => {
-    console.log(event);
+    // console.log(event);
     return {
         statusCode: 200,
         body: JSON.stringify({
@@ -17,7 +17,21 @@ module.exports.listarPacientes = async(event) => {
             2
         ),
     };
+};
 
-    // Use this code if you don't use the http event with the LAMBDA-PROXY integration
-    // return { message: 'Go Serverless v1.0! Your function executed successfully!', event };
+module.exports.obterPaciente = async(event) => {
+    const { pacienteId } = event.pathParameters;
+    const paciente = pacientes.find(pacienteObj => pacienteObj.id == pacienteId);
+
+    if (paciente == undefined) {
+        return {
+            statusCode: 404,
+            body: JSON.stringify({ error: "Paciente não existe" }, null, 2)
+        }
+    }
+
+    return {
+        statusCode: 200,
+        body: JSON.stringify(paciente, null, 2),
+    };
 };
