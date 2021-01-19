@@ -34,3 +34,10 @@ functions:
     handler: handler.listarPacientes
     events:
       - http: GET pacientes
+
+  obterPaciente:
+    handler: handler.obterPaciente
+    events:
+      - http:
+          path: pacientes/{pacienteId}
+          method: get
