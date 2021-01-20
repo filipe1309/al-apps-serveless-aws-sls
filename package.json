@@ -1,26 +1,29 @@
 {
-  "name": "cadastro-pacientes",
-  "version": "1.0.0",
-  "description": "``` mkdir my-lambda cd my-lambda npm init -y touch index.js ``` ### Dependency example moment ``` npm install moment ```",
-  "main": "handler.js",
-  "dependencies": {
-    "aws-sdk": "^2.829.0",
-    "uuid": "^8.3.2"
-  },
-  "devDependencies": {
-    "serverless-offline": "^6.8.0"
-  },
-  "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
-  },
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/filipe1309/alura-apps-serveless-aws-sls.git"
-  },
-  "author": "",
-  "license": "ISC",
-  "bugs": {
-    "url": "https://github.com/filipe1309/alura-apps-serveless-aws-sls/issues"
-  },
-  "homepage": "https://github.com/filipe1309/alura-apps-serveless-aws-sls#readme"
+    "name": "cadastro-pacientes",
+    "version": "1.0.0",
+    "description": "``` mkdir my-lambda cd my-lambda npm init -y touch index.js ``` ### Dependency example moment ``` npm install moment ```",
+    "main": "handler.js",
+    "dependencies": {
+        "aws-sdk": "^2.829.0",
+        "uuid": "^8.3.2"
+    },
+    "devDependencies": {
+        "faker": "^5.1.0",
+        "serverless-dynamodb-local": "^0.2.39",
+        "serverless-offline": "^6.8.0"
+    },
+    "scripts": {
+        "test": "echo \"Error: no test specified\" && exit 1",
+        "fixtures": "./bin/fixtures"
+    },
+    "repository": {
+        "type": "git",
+        "url": "git+https://github.com/filipe1309/alura-apps-serveless-aws-sls.git"
+    },
+    "author": "",
+    "license": "ISC",
+    "bugs": {
+        "url": "https://github.com/filipe1309/alura-apps-serveless-aws-sls/issues"
+    },
+    "homepage": "https://github.com/filipe1309/alura-apps-serveless-aws-sls#readme"
 }

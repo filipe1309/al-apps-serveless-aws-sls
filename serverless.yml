@@ -17,7 +17,30 @@ service: cadastro-pacientes
 #org: your-org-name
 
 plugins:
+  # npm i serverless-dynamodb-local --save-dev && sls dynamodb install
+  - serverless-dynamodb-local
   - serverless-offline
+custom:
+  dynamodb:
+  # If you only want to use DynamoDB Local in some stages, declare them here
+    stages:
+      - dev
+    start:
+      port: 8000
+      inMemory: true
+      heapInitial: 200m
+      heapMax: 1g
+      migrate: true
+      seed: true
+      convertEmptyValues: true
+    # Uncomment only if you already have a DynamoDB running locally
+    # noStart: true
+    seed:
+      domain:
+        sources:
+          - table: PACIENTES
+            sources: [./offline/migrations/pacientes-seed.json]
+
 
 # You can pin your service to only deploy with a specific Serverless version
 # Check out our docs for more details
