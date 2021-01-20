@@ -64,5 +64,46 @@ module.exports.obterPaciente = async event => {
             }),
         };
     }
+};
 
+module.exports.cadastrarPaciente = async event => {
+    console.log(event);
+    try {
+        const timestamp = new Date().getTime();
+
+        let dados = JSON.parse(event.body);
+
+        const { paciente_id, nome, data_nascimento, email, telefone } = dados;
+
+        const paciente = {
+            paciente_id,
+            nome,
+            data_nascimento,
+            email,
+            telefone,
+            status: true,
+            criado_em: timestamp,
+            atualizado_em: timestamp,
+        };
+
+        const data = await dynamoDb
+            .put({
+                TableName: 'PACIENTES',
+                Item: paciente
+            })
+            .promise();
+
+        return {
+            statusCode: 201,
+        }
+    } catch (err) {
+        console.log("Error", err);
+        return {
+            statusCode: err.statusCode ? err.statusCode : 500,
+            body: JSON.stringify({
+                error: err.name ? err.name : "Exception",
+                message: err.message ? err.message : "Unknown error"
+            }),
+        };
+    }
 };
