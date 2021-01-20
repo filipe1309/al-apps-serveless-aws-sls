@@ -40,4 +40,59 @@ sls deploy
 sls deploy --stage qa
 ```
 
-###
+### Get AWS Cli Current identity
+```
+aws sts get-caller-identity
+aws sts get-caller-identity --profile user1
+```
+
+
+## Api Gateway
+Frontend -> API Gateway -> Lambdas
+
+### SLS Get AWS logs (after soma executions)
+```
+sls logs -f obterPaciente --tail
+```
+
+### SLS deploy only on function
+```
+sls deploy  -f obterPaciente
+```
+
+### SLS get infos
+```
+sls info
+```
+
+
+### Plugins
+
+#### SLS Offline
+To test API Gateway + Lambda offline  
+https://github.com/dherault/serverless-offline
+```
+npm init -y
+npm install serverless-offline --save-dev
+sls offline
+```
+
+## API Designs Guides
+https://docs.microsoft.com/en-us/azure/architecture/best-practices/api-design  
+https://cloud.google.com/apis/design
+
+
+## DynamoDB
+```
+npm i aws-sdk
+```
+
+### Populate AWS DynamoDB
+```
+aws dynamodb batch-write-item --request-items file://pacientes.json
+
+aws dynamodb list-tables
+aws configure get region
+
+npm i uuid
+```
