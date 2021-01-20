@@ -32,6 +32,15 @@ provider:
   stage: dev
   region: us-east-1
 
+  iamRoleStatements:
+  - Effect: Allow
+    Action:
+      - dynamodb:Query
+      - dynamodb:Scan
+      - dynamodb:PutItem
+      - dynamodb:DeleteItem
+    Resource: arn:aws:dynamodb:us-east-1:874898405626:table/PACIENTES
+
 functions:
   listarPacientes:
     handler: handler.listarPacientes
