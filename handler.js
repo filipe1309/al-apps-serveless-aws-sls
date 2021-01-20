@@ -7,6 +7,7 @@ const pacientes = [
 ];
 
 const AWS = require("aws-sdk");
+const { v4: uuidv4 } = require("uuid");
 
 const dynamoDb = new AWS.DynamoDB.DocumentClient();
 const params = {
@@ -73,10 +74,10 @@ module.exports.cadastrarPaciente = async event => {
 
         let dados = JSON.parse(event.body);
 
-        const { paciente_id, nome, data_nascimento, email, telefone } = dados;
+        const { nome, data_nascimento, email, telefone } = dados;
 
         const paciente = {
-            paciente_id,
+            paciente_id: uuidv4(),
             nome,
             data_nascimento,
             email,
