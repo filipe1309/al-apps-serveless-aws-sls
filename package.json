@@ -3,7 +3,9 @@
   "version": "1.0.0",
   "description": "``` mkdir my-lambda cd my-lambda npm init -y touch index.js ``` ### Dependency example moment ``` npm install moment ```",
   "main": "handler.js",
-  "dependencies": {},
+  "dependencies": {
+    "aws-sdk": "^2.829.0"
+  },
   "devDependencies": {
     "serverless-offline": "^6.8.0"
   },
