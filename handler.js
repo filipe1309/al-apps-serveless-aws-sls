@@ -87,7 +87,7 @@ module.exports.cadastrarPaciente = async event => {
             atualizado_em: timestamp,
         };
 
-        const data = await dynamoDb
+        await dynamoDb
             .put({
                 TableName: 'PACIENTES',
                 Item: paciente
