@@ -54,6 +54,8 @@ provider:
 # you can overwrite defaults here
   stage: dev
   region: us-east-1
+  environment:
+    PACIENTES_TABLE: 'PACIETES-${opt:stage, self:provider.stage}'
 
   iamRoleStatements:
   - Effect: Allow
@@ -64,7 +66,7 @@ provider:
       - dynamodb:DeleteItem
       - dynamodb:GetItem
       - dynamodb:UpdateItem
-    Resource: arn:aws:dynamodb:us-east-1:874898405626:table/PACIENTES
+    Resource: 'arn:aws:dynamodb:${opt:region, self:provider.region}:874898405626:table/${self:provider.environment.PACIENTES_TABLE}'
 
 functions:
   listarPacientes:
@@ -104,7 +106,7 @@ resources:
     PacientesTable:
       Type: AWS::DynamoDB::Table
       Properties:
-        TableName: PACIENTES
+        TableName: ${self:provider.environment.PACIENTES_TABLE}
         AttributeDefinitions:
           - AttributeName: paciente_id
             AttributeType: S

@@ -21,7 +21,7 @@ const dynamoDb = isOffline() ?
     new AWS.DynamoDB.DocumentClient();
 
 const params = {
-    TableName: "PACIENTES"
+    TableName: process.env.PACIENTES_TABLE
 };
 
 module.exports.listarPacientes = async(event) => {
