@@ -77,6 +77,11 @@ npm install serverless-offline --save-dev
 sls offline
 ```
 
+#### DynamoDB Local
+```
+npm i serverless-dynamodb-local --save-dev && sls dynamodb install
+```
+
 ## API Designs Guides
 https://docs.microsoft.com/en-us/azure/architecture/best-practices/api-design  
 https://cloud.google.com/apis/design
@@ -87,7 +92,7 @@ https://cloud.google.com/apis/design
 npm i aws-sdk
 ```
 
-### Populate AWS DynamoDB
+### Populate AWS DynamoDB with JSON
 ```
 aws dynamodb batch-write-item --request-items file://pacientes.json
 
@@ -96,3 +101,15 @@ aws configure get region
 
 npm i uuid
 ```
+
+### Populate AWS DynamoDB with JSON Fixtures
+```
+npm run fixtures
+```
+
+sls offline start
+http://localhost:3000/dev/pacientes?limit=10&next=d90cd737-74c6-4772-89c0-592546b0dea1
+
+
+
+sls deploy --stage qa
